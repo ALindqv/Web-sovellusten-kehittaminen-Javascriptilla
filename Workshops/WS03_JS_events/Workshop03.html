@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="css/styles.css">
     <script>
         <!-- JavaScript menee tänne -->
+        //Harjoitus 1
+
+        //Harjoitus 2
+        document.addEventListener("click",function(){
+            document.querySelector("#otsikko1").innerHTML = "Bye bye mouse!";
+            document.querySelector("#otsikko1").style.color = 'red';
+        });
+        //Harjoitus 3
+        let textAreaEvent = () => {
+            document.getElementById("textdata").innerHTML = 'Please fill in the form with proper data.';
+            document.querySelector("#textdata").style.background = 'cyan';   
+        };
+            
+        //Harjoitus 4
+        let mouseCoords = () => { 
+            const x = event.clientX;
+            const y = event.clientY;
+            document.getElementById("coordinates").innerHTML = onMouseMove =`Hiiren X-koordinaatti: ${x}, Hiiren Y-koordinaatti: ${y}`
+        };    
+            
     </script>
 </head>
 
@@ -16,11 +36,11 @@
     <p>Tässä harjoituksessa harjoittelemme JavaScript-tapahtumien käyttöä. Käytä luentomateriaalia rinnakkain näiden
         harjoitusten kanssa. On myös hyvä idea tallentaa kirjoittamasi koodirivit myöhempää käyttöä varten.</p>
     <hr />
-    <h2>Harjoitus 1</h2>
+    <h2 id="otsikko1">Harjoitus 1</h2>
     <p>Alla näet kolme painiketta. Muokkaa lähdekoodia ja lisää näihin painikkeisiin onClick-tapahtumat.</p>
     <p>
-        <button>Napsauta minua</button>
-        <button>Näytä taulukko</button>
+        <button onclick="alert('Klikkasit minua!')">Napsauta minua</button>
+        <button onClick="showTable()">Näytä taulukko</button>
     </p>
     <div id="taulukonPaikka"></div>
     <ol>
@@ -69,7 +89,7 @@
     </table>
 
     <hr />
-    <h2>Harjoitus 2</h2>
+    <h2 onMouseOver="console.log('Stepped over by a mouse!')">Harjoitus 2</h2>
     <ul>
         <li>Lisää onMouseOver-tapahtuma otsikkoon "Harjoitus 2". Tapahtuman pitäisi aktivoitua, kun hiiri siirtyy
             otsikon
@@ -104,13 +124,13 @@
         </li>
     </ul>
     <form>
-        <textarea id="textdata"></textarea><br>
+        <textarea id="textdata" onfocus="textAreaEvent()"></textarea><br>
         <span id="charcount"></span>
         <button>Lähetä</button>
     </form>
     <hr />
     <h2>Harjoitus 4</h2>
-    <div id="coordinates">Lorem ipsum</div>
+    <div id="coordinates" onMouseMove="mouseCoords()">Lorem ipsum</div>
     <p>Lisää onMouseMove-tapahtuma yllä olevaan DIV-elementtiin. Kun liikutat
         hiirtä DIVin (suorakulmion) päällä, ohjelman pitäisi tulostaa kohdistimen
         koordinaatit.
