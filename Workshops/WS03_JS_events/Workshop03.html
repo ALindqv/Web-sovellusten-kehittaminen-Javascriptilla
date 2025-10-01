@@ -8,12 +8,35 @@
     <script>
         <!-- JavaScript menee tänne -->
         //Harjoitus 1
+        let showTable = () => {
+            const table = document.createElement("table");
+            const tableBody = document.createElement("tbody");
+            
+            for (let tr = 0; i < 4; tr++){
+                const row = document.createElement("tr");
 
+                for (let td = 0; td < 4; td++){
+                    const cell = document.createElement("td");
+                    const cellText = document.createTextNode(`cell in row ${tr}, column ${td}`);
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                }
+                tableBody.appendChild(row);
+            }
+            table.appendChild(tableBody);
+            document.appendChild(table);
+            table.setAttribute("border", "1");  
+        };
+
+        document.querySelector("#tableButton")
+        document.addEventListener("click", showTable);
         //Harjoitus 2
+        /*
         document.addEventListener("click",function(){
             document.querySelector("#otsikko1").innerHTML = "Bye bye mouse!";
             document.querySelector("#otsikko1").style.color = 'red';
-        });
+        }); */
+        
         //Harjoitus 3
         let textAreaEvent = () => {
             document.getElementById("textdata").innerHTML = 'Please fill in the form with proper data.';
