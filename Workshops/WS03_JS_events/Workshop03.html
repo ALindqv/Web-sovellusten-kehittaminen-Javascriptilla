@@ -5,51 +5,7 @@
     <meta charset="utf-8">
     <title>Työpaja 3</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script>
-        <!-- JavaScript menee tänne -->
-        //Harjoitus 1
-        let showTable = () => {
-            const table = document.createElement("table");
-            const tableBody = document.createElement("tbody");
-            
-            for (let tr = 0; i < 4; tr++){
-                const row = document.createElement("tr");
-
-                for (let td = 0; td < 4; td++){
-                    const cell = document.createElement("td");
-                    const cellText = document.createTextNode(`cell in row ${tr}, column ${td}`);
-                    cell.appendChild(cellText);
-                    row.appendChild(cell);
-                }
-                tableBody.appendChild(row);
-            }
-            table.appendChild(tableBody);
-            document.appendChild(table);
-            table.setAttribute("border", "1");  
-        };
-
-        document.querySelector("#tableButton")
-        document.addEventListener("click", showTable);
-        //Harjoitus 2
-        /*
-        document.addEventListener("click",function(){
-            document.querySelector("#otsikko1").innerHTML = "Bye bye mouse!";
-            document.querySelector("#otsikko1").style.color = 'red';
-        }); */
-        
-        //Harjoitus 3
-        let textAreaEvent = () => {
-            document.getElementById("textdata").innerHTML = 'Please fill in the form with proper data.';
-            document.querySelector("#textdata").style.background = 'cyan';   
-        };
-            
-        //Harjoitus 4
-        let mouseCoords = () => { 
-            const x = event.clientX;
-            const y = event.clientY;
-            document.getElementById("coordinates").innerHTML = onMouseMove =`Hiiren X-koordinaatti: ${x}, Hiiren Y-koordinaatti: ${y}`
-        };    
-    </script>
+    
 </head>
 
 <body class="ws3">
@@ -62,7 +18,7 @@
     <p>Alla näet kolme painiketta. Muokkaa lähdekoodia ja lisää näihin painikkeisiin onClick-tapahtumat.</p>
     <p>
         <button onclick="alert('Klikkasit minua!')">Napsauta minua</button>
-        <button onClick="showTable()">Näytä taulukko</button>
+        <button id="btn2" onClick="showTable()">Näytä taulukko</button>
     </p>
     <div id="taulukonPaikka"></div>
     <ol>
@@ -175,6 +131,55 @@
         `https://www.google.com/maps?q=LATITUDE,LONGITUDE`
     <p>Bonus: Miten voisi käsitellä tilanteen, jossa sijainti ei
         ole saatavilla?
+
+<script>
+        //Harjoitus 1
+        let showTable = () => {
+            const table = document.createElement("table");
+            const tableBody = document.createElement("tbody");
+            
+            for (let tr = 0; tr < 4; tr++){
+                const row = document.createElement("tr");
+
+                for (let td = 0; td < 4; td++){
+                    const cell = document.createElement("td");
+                    const cellText = document.createTextNode(`cell in row ${tr}, column ${td}`);
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                }
+                tableBody.appendChild(row);
+            }
+
+            paikka = document.querySelector("#taulukonPaikka");
+            table.appendChild(tableBody);
+            paikka.appendChild(table);
+            table.setAttribute("border", "1");  
+        };
+
+        
+
+        //document.getElementById("btn2").addEventListener("click", showTable);
+        //Harjoitus 2
+
+        function titleChange() {
+            document.getElementById("otsikko1").innerHTML = "Bye bye mouse!";
+            document.getElementById("otsikko1").style.color = 'red';
+        }
+        
+        document.querySelector("#otsikko1").addEventListener("click",titleChange);
+        //Harjoitus 3
+        let textAreaEvent = () => {
+            document.getElementById("textdata").innerHTML = 'Please fill in the form with proper data.';
+            document.querySelector("#textdata").style.background = 'cyan';   
+        };
+            
+        //Harjoitus 4
+        let mouseCoords = () => { 
+            const x = event.clientX;
+            const y = event.clientY;
+            document.getElementById("coordinates").innerHTML = onMouseMove =`Hiiren X-koordinaatti: ${x}, Hiiren Y-koordinaatti: ${y}`
+        };    
+    </script>
 </body>
 
 </html>
