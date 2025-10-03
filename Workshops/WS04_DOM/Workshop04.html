@@ -6,55 +6,7 @@
 	<title>Työpaja 4</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/styles.css" />
-	<script>
-        <!-- JavaScript menee tänne -->
-        //Harjoitus 1
-
-			//Painike 1
-			let changeHeading = () => {
-				document.querySelector('title').innerHTML = 'Muokattu otsikko!'
-			};
-
-			//Painike 2
-			let secondButton = () => {
-				document.querySelector('#t2').style.fontSize = '50px'
-				document.querySelector('#t2').style.fontFamily = 'Courier New'
-				document.querySelector('#t2').style.color = 'pink'
-				document.querySelector('#t2').style.background = 'black'
-			};
-
-			//Painike 3
-			let kolmas = () => {
-				document.querySelector('#lorem').innerHTML = 'Teksti muuttui uudeksi näin helposti'
-			};
-
-        //Harjoitus 2
-			var volvoImg = "https://public.keskofiles.com/f/k-auto/modelimages/volvo-xc40-2019-ktk-151-001.jpg";
-			var mersuImg = "https://images.netdirector.co.uk/gforces-auto/image/upload/w_1685,h_948,q_auto,c_fill,f_auto,fl_lossy/auto-client/5198f781af8de6d1b263c516990e9bda/avantgarde.jpeg";
-			var audiImg = "https://media.audi.com/is/image/audi/nemo/models/a6-e-tron/s6-avant-e-tron/my-2025/stage/S6e_2023_6113-L.jpg";
-			var bmwImg = "https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png";
-			let valinta = () => {
-				
-				var autoLista = document.getElementById('mySelect');
-				var lstValinta = autoLista.value;
-				alert(`Valinta: ${lstValinta}`);
-
-				let img = document.getElementById('carimage');
-
-				if (lstValinta = "Volvo"){
-					img.src = volvoImg;
-				} else if (lstValinta = "Mercedes") {
-					img.src = mersuImg;
-				}/* else if (lstValinta = "Audi") {
-					document.getElementById('carimage').src = audiImg;
-				} else if (lstValinta = "BMW") {
-					document.getElementById('carimage').src = bmwImg;
-				}*/
-			};
-			
-        //Harjoitus 3
-
-    </script>
+	
 </head>
 
 <body>
@@ -256,6 +208,55 @@
 			&lsquo;Select&rsquo;?
 		</li>
 	</ul>
+<script>
+        <!-- JavaScript menee tänne -->
+        //Harjoitus 1
+
+			//Painike 1
+			let changeHeading = () => {
+				document.querySelector('title').innerHTML = 'Muokattu otsikko!'
+			};
+
+			//Painike 2
+			let secondButton = () => {
+				document.querySelector('#t2').style.fontSize = '50px'
+				document.querySelector('#t2').style.fontFamily = 'Courier New'
+				document.querySelector('#t2').style.color = 'pink'
+				document.querySelector('#t2').style.background = 'black'
+			};
+
+			//Painike 3
+			let kolmas = () => {
+				document.querySelector('#lorem').innerHTML = 'Teksti muuttui uudeksi näin helposti'
+			};
+
+        //Harjoitus 2
+			var volvoImg = "https://public.keskofiles.com/f/k-auto/modelimages/volvo-xc40-2019-ktk-151-001.jpg";
+			var mersuImg = "https://images.netdirector.co.uk/gforces-auto/image/upload/w_1685,h_948,q_auto,c_fill,f_auto,fl_lossy/auto-client/5198f781af8de6d1b263c516990e9bda/avantgarde.jpeg";
+			var audiImg = "https://media.audi.com/is/image/audi/nemo/models/a6-e-tron/s6-avant-e-tron/my-2025/stage/S6e_2023_6113-L.jpg";
+			var bmwImg = "https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png";
+			let valinta = () => {
+				
+				var autoLista = document.getElementById('mySelect');
+				var lstValinta = autoLista.value;
+				alert(`Valinta: ${lstValinta}`);
+
+				let img = document.getElementById('carimage');
+
+				if (lstValinta = "Volvo"){
+					img.src = volvoImg;
+				} else if (lstValinta = "Mercedes") {
+					img.src = mersuImg;
+				}/* else if (lstValinta = "Audi") {
+					document.getElementById('carimage').src = audiImg;
+				} else if (lstValinta = "BMW") {
+					document.getElementById('carimage').src = bmwImg;
+				}*/
+			};
+			
+        //Harjoitus 3
+
+    </script>
 </body>
 
 </html>
