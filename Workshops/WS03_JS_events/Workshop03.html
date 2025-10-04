@@ -102,9 +102,9 @@
         </li>
     </ul>
     <form>
-        <textarea id="textdata" onfocus="textAreaEvent()"></textarea><br>
+        <textarea id="textdata" onfocus="textAreaEvent()" onkeydown="countCharacters()"></textarea><br>
         <span id="charcount"></span>
-        <button>Lähetä</button>
+        <button onClick="textAreaCheck()">Lähetä</button>
     </form>
     <hr />
     <h2>Harjoitus 4</h2>
@@ -156,9 +156,6 @@
             table.setAttribute("border", "1");  
         };
 
-        
-
-        //document.getElementById("btn2").addEventListener("click", showTable);
         //Harjoitus 2
 
         function titleChange() {
@@ -170,7 +167,19 @@
         //Harjoitus 3
         let textAreaEvent = () => {
             document.getElementById("textdata").innerHTML = 'Please fill in the form with proper data.';
-            document.querySelector("#textdata").style.background = 'cyan';   
+            document.querySelector("#textdata").style.background = 'cyan';
+        };
+
+        let countCharacters = () => {
+            const chars = document.getElementById("textdata").value.length;
+            document.getElementById("charcount").innerHTML = `Merkkimäärä: (${chars}/200)`
+        };
+
+        let textAreaCheck = () => {
+            textarea = document.getElementById("textdata").value;
+            if (textarea.length < 1) {
+                alert('Kenttä ei voi olla tyhjä');
+            }
         };
             
         //Harjoitus 4
