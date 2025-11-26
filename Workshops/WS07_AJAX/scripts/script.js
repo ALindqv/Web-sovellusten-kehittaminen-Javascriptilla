@@ -3,9 +3,9 @@ targetDiv = document.querySelector('#jsondata');
 nameBtn = document.querySelector('#names');
 allBtn = document.querySelector('#all');
 
-var data = { employees : [ +
-			{ firstName:"John" , lastName:"Doe" }, +
-			{ firstName:"Anna" , lastName:"Smith" }, +
+var data = { employees : [
+			{ firstName:"John" , lastName:"Doe" },
+			{ firstName:"Anna" , lastName:"Smith" },
 			{ firstName:"Peter" , lastName:"Jones" } ]};
 
 
@@ -22,5 +22,11 @@ const harjoitus2 = () => {
 	let jsonData = new XMLHttpRequest();
 	jsonData.open('GET', 'http://www.omdbapi.com/?s=star+wars&apikey=cbbc6750', true);
 
-	
+	jsonData.onreadystatechange = function () {
+		if (jsonData.readyState === 4 && jsonData.status === 200) {
+			var newData = JSON.parse(jsonData.responseText);
+			console.log(newData)
+		}
+	}
+	jsonData.send();
 }

@@ -43,22 +43,22 @@
     <p data-line="12">d) Bonus: Jos jonkun kentän kohdalla tapahtuu virhe, korosta virheellinen kenttä esim. punaisella
         reunalla ja anna käyttäjälle palautetta näyttämällä ilmoitus lomakkeella syötekentän vieressä olevassa &lt;span>
         -kentässä.</p>
-    <form onsubmit="">
+    <form onsubmit="validateForm(event)">
         <div class="no-border">
             <label>Name:<br>
-                <input type="text" name="name"><span id="name"></span>
+                <input type="text" id="nameInput" name="name"><span id="name"></span>
             </label>
         </div>
         <div class="no-border">
             <label>Email address:<br>
-                <input type="text" name="email"><span id="email"></span>
+                <input type="text" id="emailInput" name="email"><span id="email"></span>
             </label>
         </div>
         <div class="no-border">
             <label>
                 Comment:<br>
             </label>
-            <textarea name="comment"></textarea><span id="comment"></span>
+            <textarea id="commentInput" name="comment"></textarea><span id="comment"></span>
         </div>
         <br>
         <input type="submit" value="Send">
@@ -143,7 +143,7 @@
             F12 → Application-välilehti → vasemmalta valitse LocalStorage tai SessionStorage.</p>
     </div>
     <hr />
-
+<script src="scripts/script.js"></script>
 </body>
 
 </html>
