@@ -104,17 +104,19 @@
 	<br />
 	<p>
 	<h3>Palkkalomake</h3>
-	Nimi
-	<label for="textfield">:</label>
-	<input type="text" name="textfield" id="nimi" />
-	<br />
-	Tehtävä:
-	<input type="text" name="textfield2" id="tehtava" />
-	<br />
-	Palkka:
-	<input type="text" name="textfield3" id="palkka" />
-	<br /><br>
-	<input type="button" name="Insert" id="Insert" value="Lisää" />
+	
+    <form class="palkkalomake">
+        <label for="textfield">Nimi:</label>
+        <input type="text" name="textfield" id="nimi" />
+        <br />
+        Tehtävä:
+        <input type="text" name="textfield2" id="tehtava" />
+        <br />
+        Palkka:
+        <input type="text" name="textfield3" id="palkka" />
+        <br /><br>
+        <input type="submit" name="Insert" id="Insert" value="Lisää" />
+    </form>
 	</p>
 	<table id="data" class="display" border="1">
 		<thead>
@@ -210,7 +212,14 @@
 	</ul>
 <script>
         <!-- JavaScript menee tänne -->
-        let carImg = document.getElementById('carimage');
+        const carImg = document.querySelector('#carimage');
+
+        const nimiKentta = document.querySelector('#nimi');
+        const tehtKentta = document.querySelector('#tehtava');
+        const palkkaKentta = document.querySelector('#palkka');
+
+        const lomake = document.querySelector('.palkkalomake')
+        const lisaysNappi = document.querySelector('#Insert');
         //Harjoitus 1
 
 			//Painike 1
@@ -258,7 +267,54 @@ carImg.addEventListener('mouseover', () => {
 carImg.addEventListener('mouseout', () => {
     carImg.style.border = 'none';
 })
-        //Harjoitus 3
+//Harjoitus 3
+const lisaaRivi = (nimi, teht, palkka) => {
+        const tBody = document.querySelector("#data tbody");
+
+          const uusiRivi = tBody.insertRow();
+
+          const nimiSolu = uusiRivi.insertCell(0);
+          const tehtSolu = uusiRivi.insertCell(1);
+          const palkkaSolu = uusiRivi.insertCell(2);
+
+          nimiSolu.textContent = nimi;
+          tehtSolu.textContent = teht;
+          palkkaSolu.textContent =  `$${palkka}`;
+      }
+
+const lisaaTaulukkoon = () => {
+        
+
+        const nimiArvo = nimiKentta.value.trim();
+        const tehtArvo = tehtKentta.value.trim();
+        const palkkaArvo = palkkaKentta.value.trim();
+
+        if (nimiArvo.length <= 5) {
+          alert('Nimen täytyy olla yli 5 merkkiä pitkä.');
+          return;
+        }
+
+        if (tehtArvo === "") {
+          alert("Täytä tehtäväkenttä.");
+          return;
+        }
+
+        const palkka = parseInt(palkkaArvo);
+
+        if (!Number.isFinite(palkka) || palkka <= 0) {
+          alert('Palkan täytyy olla 0 suurempi numeroarvo');
+          return;
+        }
+
+        lisaaRivi(nimiArvo, tehtArvo, palkkaArvo);
+
+        lomake.reset()
+      }
+
+lomake.addEventListener('submit', (e) => {
+    e.preventDefault();
+    lisaaTaulukkoon()
+}) 
 
     </script>
 </body>
