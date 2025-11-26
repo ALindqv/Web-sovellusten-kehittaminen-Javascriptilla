@@ -135,25 +135,35 @@
 <script>
         //Harjoitus 1
         let showTable = () => {
-            const table = document.createElement("table");
-            const tableBody = document.createElement("tbody");
-            
-            for (let tr = 0; tr < 4; tr++){
-                const row = document.createElement("tr");
+            const table = `<table id="newTable" class="display" border="1">
+        <thead>
+            <tr>
+                <th>Etunimi</th>
+                <th>Sukunimi</th>
+                <th>Kotikaupunki</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pekka</td>
+                <td>Salonen</td>
+                <td>Helsinki</td>
+            </tr>
+            <tr>
+                <td>Matti</td>
+                <td>Jokinen</td>
+                <td>Turku</td>
+            </tr>
+            <tr>
+                <td>Janne</td>
+                <td>Virtanen</td>
+                <td>Tampere</td>
+            </tr>
+        </tbody>
+    </table>`
 
-                for (let td = 0; td < 4; td++){
-                    const cell = document.createElement("td");
-                    const cellText = document.createTextNode(`cell in row ${tr}, column ${td}`);
-                    cell.appendChild(cellText);
-                    row.appendChild(cell);
-                }
-                tableBody.appendChild(row);
-            }
-
-            paikka = document.querySelector("#taulukonPaikka");
-            table.appendChild(tableBody);
-            paikka.appendChild(table);
-            table.setAttribute("border", "1");  
+            const paikka = document.querySelector("#taulukonPaikka");
+            paikka.innerHTML = table
         };
 
         //Harjoitus 2
