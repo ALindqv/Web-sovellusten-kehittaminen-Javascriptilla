@@ -210,6 +210,7 @@
 	</ul>
 <script>
         <!-- JavaScript menee tänne -->
+        let carImg = document.getElementById('carimage');
         //Harjoitus 1
 
 			//Painike 1
@@ -231,29 +232,32 @@
 			};
 
         //Harjoitus 2
-			var volvoImg = "https://public.keskofiles.com/f/k-auto/modelimages/volvo-xc40-2019-ktk-151-001.jpg";
-			var mersuImg = "https://images.netdirector.co.uk/gforces-auto/image/upload/w_1685,h_948,q_auto,c_fill,f_auto,fl_lossy/auto-client/5198f781af8de6d1b263c516990e9bda/avantgarde.jpeg";
-			var audiImg = "https://media.audi.com/is/image/audi/nemo/models/a6-e-tron/s6-avant-e-tron/my-2025/stage/S6e_2023_6113-L.jpg";
-			var bmwImg = "https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png";
-			let valinta = () => {
+        const kuvat = {
+			Volvo: "https://public.keskofiles.com/f/k-auto/modelimages/volvo-xc40-2019-ktk-151-001.jpg",
+			Mercedes: "https://images.netdirector.co.uk/gforces-auto/image/upload/w_1685,h_948,q_auto,c_fill,f_auto,fl_lossy/auto-client/5198f781af8de6d1b263c516990e9bda/avantgarde.jpeg",
+			Audi: "https://media.audi.com/is/image/audi/nemo/models/a6-e-tron/s6-avant-e-tron/my-2025/stage/S6e_2023_6113-L.jpg",
+			BMW: "https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png"
+        }
+			const valinta = () => {
 				
-				var autoLista = document.getElementById('mySelect');
-				var lstValinta = autoLista.value;
-				alert(`Valinta: ${lstValinta}`);
+				const autot = document.getElementById('mySelect');
+				const autoValinta = autot.value;
+				alert(`Valinta: ${autoValinta}`);
+                const linkki = kuvat[autoValinta]
 
-				let img = document.getElementById('carimage');
-
-				if (lstValinta = "Volvo"){
-					img.src = volvoImg;
-				} else if (lstValinta = "Mercedes") {
-					img.src = mersuImg;
-				}/* else if (lstValinta = "Audi") {
-					document.getElementById('carimage').src = audiImg;
-				} else if (lstValinta = "BMW") {
-					document.getElementById('carimage').src = bmwImg;
-				}*/
+                    carImg.src = linkki;
+                    carImg.alt = `${autoValinta} kuva`
+                
 			};
-			
+			valinta()
+
+carImg.addEventListener('mouseover', () => {
+    carImg.style.border = '1px pink solid';
+})
+
+carImg.addEventListener('mouseout', () => {
+    carImg.style.border = 'none';
+})
         //Harjoitus 3
 
     </script>
