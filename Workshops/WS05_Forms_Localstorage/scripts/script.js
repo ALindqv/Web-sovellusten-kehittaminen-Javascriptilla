@@ -1,45 +1,94 @@
-let validateForm = (e) => {
-  
-    console.log('suoritettu')
-    document.getElementById("errorMsg").innerText = "";
-    document.getElementById("nameInput").style.border = "";
-    document.getElementById("emailInput").style.border = "";
-    document.getElementById("commentInput").style.border = "";
+const contactForm = document.querySelector('.contactForm')
 
-    inputDiv = document.querySelector('.no-border')
+const membershipForm = document.querySelector('#theForm')
 
-    const name = document.querySelector('#nameInput').value.trim();
-    const email = document.querySelector("#emailInput").value.trim();
-    const comment = document.querySelector("#commentInput").value.trim();
-    
+// Harjoitus 1 ja 3
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.querySelector('#name');
+    const email = document.querySelector('#email');
+    const comment = document.querySelector('#comment');
+
     let valid = true;
+    document.querySelector('#name').textContent = '';
+    document.querySelector('#email').textContent = '';
+    document.querySelector('#comment').textContent = '';
 
-
-    
-    // sähköpostin tarkistus
-    if (name === '') {
-      
-      document.getElementById("nameInput").style.border = "2px solid red";
-      document.getElementById("errorMsg").innerText = "Anna kelvollinen sähköpostiosoite.";
-      valid = false;
-    }
-    // sähköpostin tarkistus
-    if (email.length < 6 || !email.includes("@")) {
-      
-      document.getElementById("emailInput").style.border = "2px solid red";
-      document.getElementById("errorMsg").innerText = "Anna kelvollinen sähköpostiosoite.";
-      valid = false;
+    if (name.value.trim() === '') {
+        valid = false;
+        name.style.border = '1px solid red';
+        alert('Nimikenttä ei saa olla tyhjä.');
+    } else {
+        name.style.border = "";
     }
 
-    // salasanan tarkistus
-    if (comment.length > 150 || comment === '') {
-      document.getElementById("commentInput").style.border = "2px solid red";
-      document.getElementById("errorMsg").innerText += "\nSalasanan on oltava vähintään 6 merkkiä.";
-      valid = false;
+    if (email.value.length < 6 || email.value.length > 15 || !email.value.includes('@')) {
+        valid = false;
+        email.style.border = '1px solid red';
+        alert('Varmista, että S-posti on 6-15 merkkiä ja sisältää @-merkin.');
+    } else {
+        email.style.border = 'none';
     }
 
-    // jos virheitä, estetään lähetys
-    if (!valid) {
-      e.preventDefault();
+    if (comment.value.trim() === '' || comment.value.length > 150) {
+        valid = false;
+        comment.style.border = '1px solid red';
+        alert('Kommenttikenttä on pakollinen ja pituus enintään 150 merkkiä');
+    } else {
+        comment.style.border = "";
     }
-  }
+
+    if (valid) {
+        localStorage.setItem('name', name.value);
+        localStorage.setItem('email', email.value);
+        localStorage.setItem('comment', comment.value);
+        alert('Tiedot tallennettu localStorageen!');
+    }
+});
+
+// Harjoitus 2: Jäsenyyslaskuri
+membershipForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const membership = parseFloat(document.getElementById("type").value);
+    const years = parseInt(document.getElementById("years").value);
+    let cost = membership * years;
+
+    if (years > 2) {
+        cost *= 0.8;
+        alert('Saat 20 % alennuksen!');
+    }
+
+    if (years >= 5) {
+        cost -= 5;
+        alert(' Kaupan päälle 5 € lisäsalennus!');
+    }
+
+    document.getElementById("cost").value = cost.toFixed(2) + " €";
+    if (discountMessage) alert(discountMessage);
+});
+
+// Harjoitus 4: Datan lataaminen localStoragesta
+function loadStorage() {
+    const name = localStorage.getItem('name') || 'Ei tallennetua nimeä';
+    const email = localStorage.getItem('email') || 'Ei tallennettua sähköpostiosoitetta';
+    const comment = localStorage.getItem('comment') || 'Ei allennettuja kommentteja';
+
+    document.querySelector('#sessiondata').innerHTML = `
+        <table style="width: 100% text-align: left">
+            <tr>
+                <th>Nimi: </th>
+                <td>${name}</td>
+            </tr>
+            <tr>
+                <th>Sähköposti: </th>
+                <td>${email}</td>
+            </tr>
+            <tr>
+                <th>Kommentti: </th>
+                <td>${comment}</td>
+            </tr>
+        </table     
+    `;
+}
+
+window.onload = loadStorage;
